@@ -4,7 +4,7 @@ import { monkeyCheat } from './monkeyCheat';
 (async () => {
   const browser = await puppeteer.launch({
     headless: false,
-    executablePath: '/usr/bin/google-chrome'
+    executablePath: process.platform === 'linux' ? '/usr/bin/google-chrome' : undefined
   });
   const page = await browser.newPage();
   await page.goto('https://monkeytype.com', {
